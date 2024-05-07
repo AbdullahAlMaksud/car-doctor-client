@@ -21,11 +21,12 @@ const Login = () => {
                 const loggedInUser = result.user;
                 console.log(loggedInUser)
                 const user = { email }
+
                 //get access token
                 axios.post(`http://localhost:5000/jwt`, user, { withCredentials: true })
                     .then(res => {
+                        console.log(res.data)
                         if (res.data.success) {
-                            console.log(res.data)
                             navigate(location?.state ? location?.state : '/')
                         }
                     })
